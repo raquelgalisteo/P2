@@ -19,8 +19,8 @@ typedef struct {
     char *input_wav;
     char *output_vad;
     char *output_wav;
-    float alpha0;
-    float alpha1;
+    float umbral0;
+    float umbral1;
     int frames;
     /* special */
     const char *usage_pattern;
