@@ -19,7 +19,9 @@ typedef struct {
     char *input_wav;
     char *output_vad;
     char *output_wav;
-    char *umbral1;
+    float alpha0;
+    float alpha1;
+    int frames;
     /* special */
     const char *usage_pattern;
     const char *help_message;
@@ -281,9 +283,15 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
         } else if (!strcmp(option->olong, "--output-wav")) {
             if (option->argument)
                 args->output_wav = option->argument;
-        } else if (!strcmp(option->olong, "--umbral1")) {
+        } else if (!strcmp(option->olong, "--alpha0")) {
             if (option->argument)
-                args->umbral1 = option->argument;
+                args->alpha0 = atof(option->argument);
+        } else if (!strcmp(option->olong, "--alpha1")) {
+            if (option->argument)
+                args->alpha1 = atof(option->argument);
+        } else if (!strcmp(option->olong, "--init-frames")) {
+            if (option->argument)
+                args->frames = atoi(option->argument);
         }
     }
     /* commands */
@@ -304,7 +312,7 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
 
 DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
     DocoptArgs args = {
-        0, 0, 0, NULL, NULL, NULL, (char*) "-30",
+        0, 0, 0, NULL, NULL, NULL, 1.5, 7.0, 10,
         usage_pattern, help_message
     };
     Tokens ts;
@@ -319,7 +327,9 @@ DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
         {"-i", "--input-wav", 1, 0, NULL},
         {"-o", "--output-vad", 1, 0, NULL},
         {"-w", "--output-wav", 1, 0, NULL},
-        {"-1", "--umbral1", 1, 0, NULL}
+        {"-0", "--alpha0", 1, 0, NULL},
+        {"-1", "--alpha1", 1, 0, NULL},
+        {"-f", "--init-frames", 1, 0, NULL}
     };
     Elements elements = {0, 0, 7, commands, arguments, options};
 
