@@ -285,10 +285,10 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
                 args->output_wav = option->argument;
         } else if (!strcmp(option->olong, "--alpha0")) {
             if (option->argument)
-                args->alpha0 = atof(option->argument);
+                args->umbral0 = atof(option->argument);
         } else if (!strcmp(option->olong, "--alpha1")) {
             if (option->argument)
-                args->alpha1 = atof(option->argument);
+                args->umbral1 = atof(option->argument);
         } else if (!strcmp(option->olong, "--init-frames")) {
             if (option->argument)
                 args->frames = atoi(option->argument);
@@ -312,7 +312,9 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
 
 DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
     DocoptArgs args = {
-        0, 0, 0, NULL, NULL, NULL, 1.5, 7.0, 10,
+        0, 0, 0, NULL, NULL, NULL, 1.5, 8.6, 10, 
+        //El valor 1.5 corresponde al umbral0 mientras que el 8.6 corresponde al umbral1
+        //Con estos valores hemos obtenido los mejores resultados
         usage_pattern, help_message
     };
     Tokens ts;
@@ -327,8 +329,8 @@ DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
         {"-i", "--input-wav", 1, 0, NULL},
         {"-o", "--output-vad", 1, 0, NULL},
         {"-w", "--output-wav", 1, 0, NULL},
-        {"-0", "--alpha0", 1, 0, NULL},
-        {"-1", "--alpha1", 1, 0, NULL},
+        {"-0", "--umbral0", 1, 0, NULL},
+        {"-1", "--umbral1", 1, 0, NULL},
         {"-f", "--init-frames", 1, 0, NULL}
     };
     Elements elements = {0, 0, 7, commands, arguments, options};

@@ -129,7 +129,6 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
         vad_data->state = ST_MB_SILENCE;
       break;
 
-
     case ST_MB_SILENCE:
       if (f.p > vad_data->p1)
         vad_data->state = ST_VOICE;

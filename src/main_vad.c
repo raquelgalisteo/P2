@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  vad_data = vad_open(sf_info.samplerate, args.alpha0, args.alpha1, args.frames);  /* Allocate memory for buffers */
+  vad_data = vad_open(sf_info.samplerate, args.umbral0, args.umbral1, args.frames);  /* Allocate memory for buffers */
   frame_size   = vad_frame_size(vad_data);
   buffer       = (float *) malloc(frame_size * sizeof(float));
   buffer_zeros = (float *) malloc(frame_size * sizeof(float));
