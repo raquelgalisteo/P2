@@ -40,5 +40,5 @@ float compute_zcr(const float *x, unsigned int N, float fm) {
             cont++;
         }
     }
-    return (fm/2.0)*(1/(N-1))*cont;
+    return (fm/2.0)*(1.0/(N-1.0))*cont;
 }
