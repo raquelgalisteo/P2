@@ -52,7 +52,7 @@ Features compute_features(const float *x, int N) {
  * TODO: Init the values of vad_data
  */
 
-VAD_DATA * vad_open(float rate, float alpha0, float alpha1, int frames) {
+VAD_DATA * vad_open(float rate, float umbral0, float umbral1, int frames) {
   /****AMPLIACIÓN****: 
     Hemos incluido la posibilidad de entrar por parámetros el número de tramas que se quieren 
     coger al principio para calcular la media del nuvel de ruido de la señal. Creemos que es 
@@ -62,8 +62,8 @@ VAD_DATA * vad_open(float rate, float alpha0, float alpha1, int frames) {
   vad_data->state = ST_INIT;
   vad_data->sampling_rate = rate;
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
-  vad_data->alpha0 = alpha0;
-  vad_data->alpha1 = alpha1;
+  vad_data->umbral0 = umbral0;
+  vad_data->umbral1 = umbral1;
   vad_data->num_total_frame = frames;
   vad_data->num_frame = 0;
   vad_data->pot = 0.0;
@@ -109,8 +109,8 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
       } else {
         vad_data->state = ST_SILENCE;
         vad_data->pot = 10*log10(vad_data->pot/vad_data->num_total_frame);
-        vad_data->p1 = vad_data->pot + vad_data->alpha1; //p1 será alpha1 dBs más el nivel de potencia que tenemos
-        vad_data->p0 = vad_data->pot + vad_data->alpha0; 
+        vad_data->p1 = vad_data->pot + vad_data->umbral1; //p1 será umbral1 dBs más el nivel de potencia que tenemos
+        vad_data->p0 = vad_data->pot + vad_data->umbral0; 
         vad_data->zcr1 = vad_data->zcr1/vad_data->num_total_frame;
       }
       break;

@@ -19,8 +19,8 @@ typedef struct {
   float p1;
   float p0;
   float zcr1;
-  float alpha0;
-  float alpha1;
+  float umbral0;
+  float umbral1;
   int num_total_frame; // Tramas utilizadas para calcular la potencia del ruido
   int num_frame; // Valor de la trama actual en el intervalo [0, num_total_frame]
   float pot;
@@ -30,7 +30,7 @@ typedef struct {
    It should return allocated and initialized values of vad_data
 
    sampling_rate: ... the sampling rate */
-VAD_DATA *vad_open(float sampling_rate, float alpha0, float alpha1, int frames);
+VAD_DATA *vad_open(float sampling_rate, float umbral0, float umbral1, int frames);
 /* vad works frame by frame.
    This function returns the frame size so that the program knows how
    many samples have to be provided */
