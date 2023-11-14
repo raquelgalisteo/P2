@@ -158,20 +158,41 @@ Ejercicios
 
 ### Desarrollo del detector de actividad vocal
 
-FALTA!!
 ----------------------------------------------
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
 
+__Al implementar el autómata con los cuatro estados, podemos apreciar como hemos obtenido un 93.449% de precisión en el conjunto de señales de la base de datos.__
+```bash
+  **************** Summary ****************
+  Recall V:477.40/495.55 96.34%   Precision V:477.40/516.54 92.42%   F-score V (2)  : 95.53%
+  Recall S:282.04/321.17 87.81%   Precision S:282.04/300.18 93.96%   F-score S (1/2): 92.66%
+  ===> TOTAL: 94.084%
+```
+
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
+  <img src="img/Ej2.png" align="center">
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
+
+__Aunque en general son bastante parecidos, al principio del audio hay un pequeño instante en el que en medio de un silencio laargo detetcta voz. Hay pequeños errores de precisión (tanto a la hora de etiquetar manualmente como al detectarlo), a penas apreciables (0,05s), justo en los cambios entre voz y silencio.__
+
+__Nos gustaria comentar, que a diferencia del etiquetado manual, la detección automática genera varias etiquetas seguidas de un mismo tipo de trama. Esto se debe a haber eliminado los glitches, saltos breves de voz a silencio y viceversa.__
 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+
+  __Tal y como se ha indicado en el primer ejercicio, tras haber probado diferentes algoritmos en el autómata, el mejor resultado conseguido se ha conseguido implementando los cuatro estados.__
+
+```bash
+  **************** Summary ****************
+  Recall V:477.40/495.55 96.34%   Precision V:477.40/516.54 92.42%   F-score V (2)  : 95.53%
+  Recall S:282.04/321.17 87.81%   Precision S:282.04/300.18 93.96%   F-score S (1/2): 92.66%
+  ===> TOTAL: 94.084%
+```
 
 
 ### Trabajos de ampliación
@@ -221,7 +242,6 @@ __Además, hemos añadido la opción de elegir el número de tramas que se utili
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
-FALTA!!
 ----------------------------------------------
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
@@ -229,6 +249,8 @@ FALTA!!
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
+
+  __Hemos decidido incluir el parámetro de la tasa de cruces por cero en la evaluación de la señal para conseguir un autómata más completo y preciso ya que en nuestra señal particular y otras estudiadas, la mejora es más perceptible.__
 
 
 ### Antes de entregar la práctica
