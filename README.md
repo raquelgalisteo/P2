@@ -1,5 +1,7 @@
 PAV - P2: detección de actividad vocal (VAD)
 ============================================
+Raquel Galisteo y Xavier Moreno
+----------------------------------------------
 
 Esta práctica se distribuye a través del repositorio GitHub [Práctica 2](https://github.com/albino-pav/P2),
 y una parte de su gestión se realizará mediante esta web de trabajo colaborativo.  Al contrario que Git,
@@ -154,7 +156,7 @@ Ejercicios
 	__No podemos llegar a ninguna conclusión a partir de la evolución de la tasa de cruces por cero, aunque puede ser útil para acabar de tomar alguna decisión. En los tramos sordos la zcr suele oscilar alrededor de 0,5 y 1,5. Cabe destacar que, justo al empezar un tramo de voz (y en algunos casos al empezar a pronunciar una palabra), la zcr crece notablemente, pudiéndonos llevar a confusión. Por tanto, únicamente son útiles para acabar de perfeccionar el autómata.__
 
 
-### Desarrollo del detector de actividad vocal
+### Desarrollo del detector de actividad vocal FALTA!!
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
@@ -188,16 +190,33 @@ Ejercicios
   __Si utilizamos la señal modificada _prueba_out.wav_ con las tramas de silencio a cero, podemos volvemos a ejecutar el programa para generar un nuevo .vad. Si lo comparamos con el .lab de la señal original obtenemos un mejor resultado.__
 
   ```bash
-  hola
+  **************** prueba.lab ****************
+  Recall V:  6.94/6.94  100.00%   Precision V:  6.94/8.24   84.22%   F-score V (2)  : 96.39%
+  Recall S:  1.83/3.13   58.45%   Precision S:  1.83/1.83  100.00%   F-score S (1/2): 87.55%
+  ===> prueba.lab: 91.864%
   ```
+
+  ```bash
+  **************** prueba.lab ****************
+  Recall V:  6.94/6.94  100.00%   Precision V:  6.94/8.03   86.42%   F-score V (2)  : 96.95%
+  Recall S:  2.04/3.13   65.19%   Precision S:  2.04/2.04  100.00%   F-score S (1/2): 90.35%
+  ===> prueba.lab: 93.593%
+  ```
+
+  __Como se aprecia en el segundo resultado, que corresponde al obtenido con la señal modificada _prueba_out.wav_ con las tramas de silencio a cero, hemos obtenido un mejor resultado que con la señal original.__
 
 #### Gestión de las opciones del programa usando `docopt_c`
 
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
 
+ <img src="img/Ejercicio4_P2_docopt_c.png" align="center">  
 
-### Contribuciones adicionales y/o comentarios acerca de la práctica
+__En el programa de ayuda se ha añadido la opción de introducir dos umbrales. _umbral0_ corresponde al valor máximo para que la voz pase a ser considerada como silencio, mientras que _umbral1_ es el mínimo valor para pasar de silencio a voz. Este valor lo hemos decidido poner en 8.6 ya que es el valor con el que mejor resultado hemos obtenido.__
+
+__Además, hemos añadido la opción de elegir el número de tramas que se utilizan para obtener la potencia media del ruido de la señal.__
+
+### Contribuciones adicionales y/o comentarios acerca de la práctica FALTA!!
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).

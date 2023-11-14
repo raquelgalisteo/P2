@@ -313,7 +313,7 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
 DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
     DocoptArgs args = {
         0, 0, 0, NULL, NULL, NULL, 1.5, 8.6, 10, 
-        //El valor 1.5 corresponde al umbral0 mientras que el 8.6 corresponde al umbral1
+        //El valor 1.5 corresponde al umbral0, el 8.6 corresponde al umbral1, mientras que el 10 corresponde al número de frames.
         //Con estos valores hemos obtenido los mejores resultados
         usage_pattern, help_message
     };
