@@ -163,7 +163,7 @@ Ejercicios
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
 
-__Al implementar el autómata con los cuatro estados, podemos apreciar como hemos obtenido un 93.449% de precisión en el conjunto de señales de la base de datos.__
+__Al implementar el autómata con los cuatro estados, podemos apreciar como hemos obtenido un 94.084% de precisión en el conjunto de señales de la base de datos.__
 ```bash
   **************** Summary ****************
   Recall V:477.40/495.55 96.34%   Precision V:477.40/516.54 92.42%   F-score V (2)  : 95.53%
