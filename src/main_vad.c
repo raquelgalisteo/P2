@@ -82,9 +82,6 @@ int main(int argc, char *argv[]) {
       sf_write_float(sndfile_out, buffer, frame_size);
     }
 
-    state = vad(vad_data, buffer);
-    if (verbose & DEBUG_VAD) vad_show_state(vad_data, stdout);
-
     /* TODO: print only SILENCE and VOICE labels */
     /* As it is, it prints UNDEF segments but is should be merge to the proper value */
     state = vad(vad_data, buffer);
@@ -105,7 +102,7 @@ int main(int argc, char *argv[]) {
       last_state = state;
     }
 
-    if (sndfile_out != 0) {
+    if (sndfile_out != 0 && state == ST_SILENCE) {
       /* TODO: go back and write zeros in silence segments */
       sf_seek(sndfile_out, -frame_size, SEEK_CUR);
       sf_write_float(sndfile_out, buffer_zeros, frame_size);

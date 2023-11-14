@@ -135,16 +135,23 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
+<img src="img/Ejercicio1_P2.png" align="center">
 
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
+	  
+	  __En el caso de la potencia, los tramos de silencio y voz se diferencian bastante bien a lo largo de toda la señal. Utilizando el audio que se nos proporciona al inicio de la práctica _prueba.wav_, podríamos utilizar -30dBs como umbral, ya que a lo largo de la señal los tramos de silencio no superan este valor. Sin embargo, imponer siempre un mismo umbral no es la mejor opción. Por ese motivo, hemos optado por realizar la media de las primeras tramas (que se consideran silencio) para así poder personalizar el estudio para cada señal.__
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
+	__En el fichero _WAVE_ que se nos proporciona se ha exagerado alguna pausa entre frases, por lo que decidimos comparar los resultados obtenidos con otro audio de la práctica 1, llegando a la conclusión de que los tramos de silencio no suelen durar menos de 0,3s/0,4s aproximadamente. Por otro lado, los tramos de voz tienen duración más variable, debido a la longitud de la frase o palabra que se pronuncie. En este caso, el segmento de voz más corto es de 2,8s y el más largo es de 4,1s, tal i como se puede observar en la imagen.__
+
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+
+	__No podemos llegar a ninguna conclusión a partir de la evolución de la tasa de cruces por cero, aunque puede ser útil para acabar de tomar alguna decisión. En los tramos sordos la zcr suele oscilar alrededor de 0,5 y 1,5. Cabe destacar que, justo al empezar un tramo de voz (y en algunos casos al empezar a pronunciar una palabra), la zcr crece notablemente, pudiéndonos llevar a confusión. Por tanto, únicamente son útiles para acabar de perfeccionar el autómata.__
 
 
 ### Desarrollo del detector de actividad vocal
@@ -169,6 +176,20 @@ Ejercicios
 - Si ha desarrollado el algoritmo para la cancelación de los segmentos de silencio, inserte una gráfica en
   la que se vea con claridad la señal antes y después de la cancelación (puede que `wavesurfer` no sea la
   mejor opción para esto, ya que no es capaz de visualizar varias señales al mismo tiempo).
+
+  __En la siguiente imagen podemos observar la señal de audio original:__
+  <img src="img/Ejercicio3_P2_Original.png" align="center">
+
+  __Seguidamente, observamos la imagen con la señal de audio modificada añadiendo ceros en las tramas detectadas como silencios:__
+  <img src="img/Ejercicio3_P2_SilencioCero.png" align="center">
+
+  __Visualmente, podemos concluir que el autómata funciona correctamente, ya que en la mayoría de tramos de la señal original donde realmente había silencios se han modificado y ahora toman el valor de cero.__
+
+  __Si utilizamos la señal modificada _prueba_out.wav_ con las tramas de silencio a cero, podemos volvemos a ejecutar el programa para generar un nuevo .vad. Si lo comparamos con el .lab de la señal original obtenemos un mejor resultado.__
+
+  ```bash
+  hola
+  ```
 
 #### Gestión de las opciones del programa usando `docopt_c`
 
