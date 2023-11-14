@@ -145,7 +145,7 @@ Ejercicios
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
 	  
-	  __En el caso de la potencia, los tramos de silencio y voz se diferencian bastante bien a lo largo de toda la señal. Utilizando el audio que se nos proporciona al inicio de la práctica _prueba.wav_, podríamos utilizar -30dBs como umbral, ya que a lo largo de la señal los tramos de silencio no superan este valor. Sin embargo, imponer siempre un mismo umbral no es la mejor opción. Por ese motivo, hemos optado por realizar la media de las primeras tramas (que se consideran silencio) para así poder personalizar el estudio para cada señal.__
+	__En el caso de la potencia, los tramos de silencio y voz se diferencian bastante bien a lo largo de toda la señal. Utilizando el audio que se nos proporciona al inicio de la práctica _prueba.wav_, podríamos utilizar -30dBs como umbral, ya que a lo largo de la señal los tramos de silencio no superan este valor. Sin embargo, imponer siempre un mismo umbral no es la mejor opción. Por ese motivo, hemos optado por realizar la media de las primeras tramas (que se consideran silencio) para así poder personalizar el estudio para cada señal.__
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
@@ -156,7 +156,10 @@ Ejercicios
 	__No podemos llegar a ninguna conclusión a partir de la evolución de la tasa de cruces por cero, aunque puede ser útil para acabar de tomar alguna decisión. En los tramos sordos la zcr suele oscilar alrededor de 0,5 y 1,5. Cabe destacar que, justo al empezar un tramo de voz (y en algunos casos al empezar a pronunciar una palabra), la zcr crece notablemente, pudiéndonos llevar a confusión. Por tanto, únicamente son útiles para acabar de perfeccionar el autómata.__
 
 
-### Desarrollo del detector de actividad vocal FALTA!!
+### Desarrollo del detector de actividad vocal
+
+FALTA!!
+----------------------------------------------
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
@@ -216,7 +219,10 @@ __En el programa de ayuda se ha añadido la opción de introducir dos umbrales. 
 
 __Además, hemos añadido la opción de elegir el número de tramas que se utilizan para obtener la potencia media del ruido de la señal.__
 
-### Contribuciones adicionales y/o comentarios acerca de la práctica FALTA!!
+### Contribuciones adicionales y/o comentarios acerca de la práctica
+
+FALTA!!
+----------------------------------------------
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
